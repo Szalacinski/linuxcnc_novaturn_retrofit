@@ -1,0 +1,113 @@
+// Copyright 2021 Caleb Szalacinski
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+// documentation files (the "Software"), to deal in the Software without restriction, including without limitation the
+// rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to
+// permit persons to whom the Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be
+// included in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+// WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+// COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+component novaturn_toolchanger "Denford Novaturn 8-position tool turret";
+license "MIT";
+
+// No need to run this faster than 0.1 sec per cycle (100000000 nsec)
+pin in bit in0;
+pin in bit in1;
+pin in bit in2;
+pin in signed tool_prep_number;
+pin in bit tool_prepare;
+pin out bit tool_prepared;
+pin in bit tool_change;
+pin out bit tool_changed;
+pin out bit tool_change_relay;
+option singleton yes;
+function _ nofp;
+;;
+#include <linuxcnc/rtapi.h>
+
+// Tool table; functionally equivalent to Gray Code
+const hal_bit_t tt[8][3] = {{0, 0, 0},{0, 0, 1},{1, 0, 1},{1, 1, 1},{0, 1, 1},{0, 1, 0},{1, 1, 0},{1, 0, 0}};
+
+hal_bit_t tool_check(const hal_bit_t i0, const hal_bit_t i1, const hal_bit_t i2, const signed toolnum) {
+	return ((tt[toolnum][0] == i0) && (tt[toolnum][1] == i1) && (tt[toolnum][2] == i2));
+}
+
+FUNCTION(_) {
+	// The requested tool number
+	signed tool_number = 0;
+	// The tool after that one
+	signed next_tool = 0;
+
+	while (1) {
+
+		// System sends the needed tool number
+		if (tool_prepare) {
+
+			// Example: T0, T8, T16 all refer to position 1
+			// This allows for saving extra tool info without overwriting anything.
+			tool_number = tool_prep_number % 8;
+
+			// Needs to get to the next tool so it can reverse and stop at the tool we want
+			next_tool = (tool_number + 1) % 8;
+
+			// Tell the system we received the tool number
+			tool_prepared = 1;
+
+			// ACK from system
+			while (tool_prepare)
+				rtapi_wait();
+
+			// ACK from toolchanger
+			tool_prepared = 0;
+
+		// System requests tool change
+		} else if (tool_change) {
+
+			// Check if we are already in the proper position
+			if (!tool_check(in0, in1, in2, tool_number)) {
+
+				// Start moving the toolchanger
+				tool_change_relay = 1;
+
+				// Get to the tool
+				while (!tool_check(in0, in1, in2, tool_number))
+					rtapi_wait();
+
+				// Wait until we reach the next tool
+				while (!tool_check(in0, in1, in2, next_tool))
+					rtapi_wait();
+
+				// Stop moving the toolchanger
+				tool_change_relay = 0;
+
+				// Toolchanger reverses and settles at the correct tool
+				while (!tool_check(in0, in1, in2, tool_number))
+					rtapi_wait();
+			}
+
+			// Wait at least 2 seconds for sanity, because the toolchanger has no "complete" signal
+			for (long long i = 0; i < 2000000000; i += period)
+				rtapi_wait();
+
+			// Tell the system that the tool has been changed
+			tool_changed = 1;
+				
+			// Wait for ACK from system
+			while (tool_change)
+				rtapi_wait();
+
+			// ACK from toolchanger
+			tool_changed = 0;
+				
+		// No requests this cycle
+		} else {
+			rtapi_wait();
+		}
+	}
+}

@@ -1,0 +1,961 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 6
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+Text Notes 4000 850  0    197  ~ 0
+DENFORD NOVATURN
+$Sheet
+S 5950 3000 800  1100
+U 6123DEB2
+F0 "mesa_7I85s" 50
+F1 "mesa_7I85s.sch" 50
+F2 "28V_28" U R 6750 3100 50 
+F3 "28V_0" U R 6750 3200 50 
+F4 "SPINDLE_PWM" O L 5950 3300 50 
+$EndSheet
+$Comp
+L Switch:SW_DPST SW1
+U 1 1 6123E1FE
+P 1300 1350
+F 0 "SW1" H 1300 1675 50  0000 C CNN
+F 1 "ISOLATOR" H 1300 1584 50  0000 C CNN
+F 2 "" H 1300 1350 50  0001 C CNN
+F 3 "~" H 1300 1350 50  0001 C CNN
+	1    1300 1350
+	1    0    0    -1  
+$EndComp
+Text Label 550  1250 0    50   ~ 0
+NN1
+Text Label 550  1450 0    50   ~ 0
+LL1
+$Comp
+L Device:EMI_Filter_LL FL1
+U 1 1 6123F60A
+P 2000 1350
+F 0 "FL1" H 2000 1650 50  0000 C CNN
+F 1 "FILTER (361W)" H 2000 1550 50  0000 C CNN
+F 2 "" H 2000 1390 50  0001 C CNN
+F 3 "~" H 2000 1390 50  0001 C CNN
+	1    2000 1350
+	1    0    0    -1  
+$EndComp
+Wire Notes Line
+	800  1200 800  1500
+Wire Notes Line
+	800  1500 950  1500
+Wire Notes Line
+	950  1500 950  1200
+Wire Notes Line
+	950  1200 800  1200
+Wire Wire Line
+	550  1250 1100 1250
+Wire Wire Line
+	550  1450 1100 1450
+Text Notes 550  1850 0    50   ~ 0
+FERRITE CORE (361T)\nDO NOT TAKE\nEARTH WIRE\nTHROUGH CORE
+Wire Wire Line
+	1500 1250 1800 1250
+Wire Wire Line
+	1500 1450 1800 1450
+Text Label 1600 1450 0    50   ~ 0
+L1
+Text Label 1600 1250 0    50   ~ 0
+N1
+Text Label 2500 1250 2    50   ~ 0
+N
+Text Label 2500 1450 2    50   ~ 0
+L
+Wire Wire Line
+	2200 1250 2700 1250
+Connection ~ 2700 1250
+$Sheet
+S 4100 1800 850  950 
+U 6124AC98
+F0 "spinx1" 50
+F1 "spinx1.sch" 50
+F2 "SPINDLE_10V" U L 4100 1850 50 
+F3 "SPINDLE_COMMON" U L 4100 1950 50 
+F4 "SPINDLE_CONTROL" O L 4100 2050 50 
+F5 "MESA_5V" U R 4950 2350 50 
+F6 "MESA_GND" U R 4950 2450 50 
+F7 "ENABLE_IN_LOW" I R 4950 2550 50 
+F8 "ENABLE_OUT" O L 4100 2150 50 
+F9 "ENABLE_OUT-" U L 4100 2250 50 
+F10 "PWM" I R 4950 2650 50 
+$EndSheet
+Wire Wire Line
+	2200 1450 2350 1450
+$Comp
+L Device:Fuse F2
+U 1 1 6125A89A
+P 2350 2000
+F 0 "F2" H 2290 1954 50  0000 R CNN
+F 1 "10A" H 2290 2045 50  0000 R CNN
+F 2 "" V 2280 2000 50  0001 C CNN
+F 3 "~" H 2350 2000 50  0001 C CNN
+	1    2350 2000
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	2350 1850 2350 1450
+Connection ~ 2350 1450
+Text Label 2450 2600 2    50   ~ 0
+2
+Text Label 2800 2600 2    50   ~ 0
+3
+Text Label 3950 2250 2    50   ~ 0
+53
+Text Label 3950 2150 2    50   ~ 0
+54
+Wire Wire Line
+	2700 2350 2850 2350
+Wire Wire Line
+	2700 1250 2700 2350
+Wire Wire Line
+	2350 2600 2500 2600
+Wire Wire Line
+	2350 2150 2350 2600
+$Sheet
+S 2850 1800 850  1300
+U 612488A3
+F0 "spindle_drive" 50
+F1 "spindle_drive.sch" 50
+F2 "SPINDLE_10V" U R 3700 1850 50 
+F3 "SPINDLE_COMMON" U R 3700 1950 50 
+F4 "SPINDLE_CONTROL" I R 3700 2050 50 
+F5 "SPINDLE_RUN" I R 3700 2150 50 
+F6 "MOTOR-" U L 2850 3050 50 
+F7 "MOTOR+" U L 2850 2950 50 
+F8 "L" U L 2850 2600 50 
+F9 "N" U L 2850 2350 50 
+F10 "SPINDLE_RUN_COM" U R 3700 2250 50 
+F11 "TACH1" U L 2850 2750 50 
+F12 "TACH2" U L 2850 2850 50 
+$EndSheet
+Wire Wire Line
+	4100 2150 3700 2150
+Wire Wire Line
+	4100 2050 3700 2050
+Wire Wire Line
+	4100 1950 3700 1950
+Wire Wire Line
+	4100 1850 3700 1850
+Wire Wire Line
+	3700 2250 4100 2250
+Text Label 3950 1850 2    50   ~ 0
+10V
+Text Label 3950 1950 2    50   ~ 0
+2
+Text Label 3950 2050 2    50   ~ 0
+3
+Wire Wire Line
+	2850 2750 2350 2750
+Wire Wire Line
+	2850 2850 2350 2850
+Wire Wire Line
+	2850 2950 2350 2950
+Wire Wire Line
+	2850 3050 2350 3050
+Text Notes 2300 2750 2    50   ~ 0
+[4]
+Text Notes 2300 2850 2    50   ~ 0
+[5]
+Text Notes 2300 2950 2    50   ~ 0
+[2]
+Text Notes 2300 3050 2    50   ~ 0
+[1]
+Text Label 2500 2950 2    50   ~ 0
+21
+Text Label 2500 3050 2    50   ~ 0
+22
+$Comp
+L Motor:Fan M2
+U 1 1 6127266A
+P 9700 1800
+F 0 "M2" H 9650 2300 50  0000 L CNN
+F 1 "ENCLOSURE FAN (110V AC)" H 9300 2200 50  0000 L CNN
+F 2 "" H 9700 1810 50  0001 C CNN
+F 3 "~" H 9700 1810 50  0001 C CNN
+	1    9700 1800
+	1    0    0    -1  
+$EndComp
+$Comp
+L Motor:Motor_DC M1
+U 1 1 6127313C
+P 1100 2900
+F 0 "M1" H 1258 2896 50  0000 L CNN
+F 1 "SPINDLE" H 1258 2805 50  0000 L CNN
+F 2 "" H 1100 2810 50  0001 C CNN
+F 3 "~" H 1100 2810 50  0001 C CNN
+	1    1100 2900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2100 2950 1700 2950
+Wire Wire Line
+	1700 2950 1700 2650
+Wire Wire Line
+	1700 2650 1100 2650
+Wire Wire Line
+	1100 2650 1100 2700
+Wire Wire Line
+	1100 3200 1700 3200
+Wire Wire Line
+	1700 3200 1700 3050
+Wire Wire Line
+	1700 3050 2100 3050
+Wire Wire Line
+	1000 2950 900  2950
+Wire Wire Line
+	900  2950 900  3300
+Wire Wire Line
+	900  3300 1750 3300
+Wire Wire Line
+	1750 3300 1750 3150
+Wire Wire Line
+	1750 3150 2100 3150
+Text Notes 2000 3250 2    50   ~ 0
+[3]
+Text Label 2100 2950 2    50   ~ 0
+21
+Text Label 2100 3050 2    50   ~ 0
+22
+Wire Wire Line
+	2100 3150 2100 3200
+Wire Wire Line
+	2100 3200 2750 3200
+$Comp
+L power:Earth #PWR0101
+U 1 1 612765AB
+P 2750 3200
+F 0 "#PWR0101" H 2750 2950 50  0001 C CNN
+F 1 "Earth" H 2750 3050 50  0001 C CNN
+F 2 "" H 2750 3200 50  0001 C CNN
+F 3 "~" H 2750 3200 50  0001 C CNN
+	1    2750 3200
+	1    0    0    -1  
+$EndComp
+Wire Notes Line
+	2550 3250 2550 2900
+Wire Notes Line
+	2550 2900 2650 2900
+Wire Notes Line
+	2650 2900 2650 3250
+Wire Notes Line
+	2550 3250 2650 3250
+$Comp
+L power:Earth #PWR0102
+U 1 1 612773A3
+P 2600 3250
+F 0 "#PWR0102" H 2600 3000 50  0001 C CNN
+F 1 "Earth" H 2600 3100 50  0001 C CNN
+F 2 "" H 2600 3250 50  0001 C CNN
+F 3 "~" H 2600 3250 50  0001 C CNN
+	1    2600 3250
+	1    0    0    -1  
+$EndComp
+Wire Notes Line
+	2500 2500 2500 2700
+Wire Notes Line
+	2500 2700 2700 2700
+Wire Notes Line
+	2700 2700 2700 2500
+Wire Notes Line
+	2700 2500 2500 2500
+Text Notes 2650 2700 2    50   ~ 0
+ESR
+Wire Wire Line
+	2700 2600 2850 2600
+Text Notes 2800 7650 2    118  ~ 0
+[N] DESIGNATES THE\n42-WAY CONNECTOR PIN
+Wire Wire Line
+	4950 2350 5300 2350
+Text Label 5300 2350 2    50   ~ 0
+MESA_5V
+Wire Wire Line
+	4950 2450 5350 2450
+Text Label 5350 2450 2    50   ~ 0
+MESA_GND
+$Sheet
+S 6100 1800 1000 900 
+U 6128BC52
+F0 "toolpost_board" 50
+F1 "toolpost_board.sch" 50
+F2 "TB0" O R 7100 2450 50 
+F3 "TB1" O R 7100 2550 50 
+F4 "TB2" O R 7100 2650 50 
+F5 "MESA_GND" U R 7100 2200 50 
+F6 "N" U L 6100 2500 50 
+F7 "L" U L 6100 2600 50 
+F8 "24V_24" U R 7100 1900 50 
+F9 "24V_GND" U R 7100 2000 50 
+F10 "MESA_5V" U R 7100 2100 50 
+F11 "TPFW" I R 7100 2350 50 
+$EndSheet
+$Comp
+L Device:Fuse F3
+U 1 1 6128E4F0
+P 5650 2000
+F 0 "F3" H 5500 2050 50  0000 L CNN
+F 1 "3.15A" H 5400 1950 50  0000 L CNN
+F 2 "" V 5580 2000 50  0001 C CNN
+F 3 "~" H 5650 2000 50  0001 C CNN
+	1    5650 2000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5650 1450 5650 1850
+Wire Wire Line
+	2350 1450 5650 1450
+Wire Wire Line
+	2700 1250 5900 1250
+Wire Wire Line
+	5650 1450 7200 1450
+Connection ~ 5650 1450
+Connection ~ 5900 1250
+Wire Wire Line
+	5650 2150 5650 2600
+Wire Wire Line
+	5650 2600 5750 2600
+Wire Wire Line
+	5900 1250 5900 2500
+Wire Wire Line
+	6100 2600 5950 2600
+Text Label 5750 2600 2    50   ~ 0
+4
+Text Label 5950 2600 0    50   ~ 0
+5
+Wire Wire Line
+	5900 2500 6100 2500
+Wire Notes Line
+	5750 2550 5950 2550
+Wire Notes Line
+	5950 2550 5950 2700
+Wire Notes Line
+	5950 2700 5750 2700
+Wire Notes Line
+	5750 2700 5750 2550
+Text Notes 5900 2700 2    50   ~ 0
+ESR
+$Comp
+L Device:Transformer_1P_2S T1
+U 1 1 6129A787
+P 8100 1450
+F 0 "T1" H 8100 2100 50  0000 C CNN
+F 1 "MAIN TRANSFORMER" H 8100 2000 50  0000 C CNN
+F 2 "" H 8100 1450 50  0001 C CNN
+F 3 "~" H 8100 1450 50  0001 C CNN
+	1    8100 1450
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:Fuse F1
+U 1 1 612A2AAF
+P 7350 1450
+F 0 "F1" V 7550 1450 50  0000 C CNN
+F 1 "3.15A" V 7450 1450 50  0000 C CNN
+F 2 "" V 7280 1450 50  0001 C CNN
+F 3 "~" H 7350 1450 50  0001 C CNN
+	1    7350 1450
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	7500 1450 7700 1450
+Wire Wire Line
+	7700 1450 7700 1650
+Wire Wire Line
+	5900 1250 7700 1250
+Wire Wire Line
+	8500 1050 9150 1050
+Wire Wire Line
+	8500 1350 9150 1350
+Text Label 9150 1050 2    50   ~ 0
+29
+Text Label 9150 1350 2    50   ~ 0
+24
+Text Label 9150 1550 2    50   ~ 0
+30
+Wire Wire Line
+	8500 1850 9150 1850
+Text Label 10300 2000 2    50   ~ 0
+31
+Wire Notes Line
+	8700 900  8700 1450
+Wire Notes Line
+	8700 1450 8900 1450
+Wire Notes Line
+	8900 1450 8900 900 
+Wire Notes Line
+	8900 900  8700 900 
+Text Notes 8850 850  2    50   ~ 0
+28V
+Wire Notes Line
+	8900 1500 8700 1500
+Wire Notes Line
+	8700 1500 8700 1900
+Wire Notes Line
+	8700 1900 8900 1900
+Wire Notes Line
+	8900 1900 8900 1500
+Text Notes 8900 2000 2    50   ~ 0
+110V
+Text Notes 8800 1850 2    50   ~ 0
+0
+Text Notes 8850 1650 2    50   ~ 0
+110
+Text Notes 8850 1150 2    50   ~ 0
+28
+Text Notes 8800 1350 2    50   ~ 0
+0
+Wire Wire Line
+	9550 1550 9550 1500
+Wire Wire Line
+	9550 1500 9700 1500
+Wire Wire Line
+	9150 1850 9150 2000
+Wire Wire Line
+	9150 2000 9700 2000
+Wire Wire Line
+	9700 2000 10100 2000
+Connection ~ 9700 2000
+Wire Wire Line
+	8500 1550 9150 1550
+$Comp
+L Device:Fuse F4
+U 1 1 612B709C
+P 9300 1550
+F 0 "F4" V 9100 1550 50  0000 C CNN
+F 1 "3.15A" V 9200 1550 50  0000 C CNN
+F 2 "" V 9230 1550 50  0001 C CNN
+F 3 "~" H 9300 1550 50  0001 C CNN
+	1    9300 1550
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	9450 1550 9550 1550
+Text Label 9550 1550 2    50   ~ 0
+32
+$Comp
+L power:Earth #PWR0103
+U 1 1 612B8C7E
+P 10100 2000
+F 0 "#PWR0103" H 10100 1750 50  0001 C CNN
+F 1 "Earth" H 10100 1850 50  0001 C CNN
+F 2 "" H 10100 2000 50  0001 C CNN
+F 3 "~" H 10100 2000 50  0001 C CNN
+	1    10100 2000
+	1    0    0    -1  
+$EndComp
+Connection ~ 10100 2000
+Wire Wire Line
+	10100 2000 10400 2000
+Wire Wire Line
+	9700 1500 10350 1500
+Connection ~ 9700 1500
+Wire Notes Line
+	10450 1500 10450 2000
+Wire Notes Line
+	10450 2000 10950 2000
+Wire Notes Line
+	10950 2000 10950 1500
+Wire Notes Line
+	10950 1500 10450 1500
+Wire Wire Line
+	10400 2000 10400 1900
+Wire Wire Line
+	10400 1900 10450 1900
+Wire Wire Line
+	10350 1500 10350 1650
+Wire Wire Line
+	10350 1650 10450 1650
+Text Notes 10800 1600 2    50   ~ 0
+24V PSU
+Text Notes 10900 1700 2    50   ~ 0
++
+Text Notes 10900 1850 2    50   ~ 0
+-
+Wire Notes Line
+	10950 1600 10800 1600
+Wire Notes Line
+	10800 1750 10950 1750
+Wire Notes Line
+	10800 1900 10950 1900
+Wire Notes Line
+	10800 1600 10800 1900
+Wire Wire Line
+	10950 1650 11100 1650
+Wire Wire Line
+	10950 1850 11100 1850
+Text Label 11100 1650 2    50   ~ 0
+61
+Text Label 11100 1850 2    50   ~ 0
+60
+$Comp
+L power:Earth #PWR0104
+U 1 1 612C7062
+P 11100 1850
+F 0 "#PWR0104" H 11100 1600 50  0001 C CNN
+F 1 "Earth" H 11100 1700 50  0001 C CNN
+F 2 "" H 11100 1850 50  0001 C CNN
+F 3 "~" H 11100 1850 50  0001 C CNN
+	1    11100 1850
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:Fuse F5
+U 1 1 612C8928
+P 9300 1050
+F 0 "F5" V 9103 1050 50  0000 C CNN
+F 1 "6.3A" V 9194 1050 50  0000 C CNN
+F 2 "" V 9230 1050 50  0001 C CNN
+F 3 "~" H 9300 1050 50  0001 C CNN
+	1    9300 1050
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	9450 1050 9750 1050
+Text Label 9750 1050 2    50   ~ 0
+25
+Wire Notes Line
+	9750 950  9750 1150
+Wire Notes Line
+	9750 1150 9950 1150
+Wire Notes Line
+	9950 1150 9950 950 
+Wire Notes Line
+	9950 950  9750 950 
+Wire Wire Line
+	9950 1050 10100 1050
+Text Notes 9900 1150 2    50   ~ 0
+ESR\n
+Text Label 10100 1050 2    50   ~ 0
+26
+$Comp
+L Switch:SW_SPDT SW2
+U 1 1 612D0154
+P 10700 4200
+F 0 "SW2" H 10700 3875 50  0000 C CNN
+F 1 "X_DATUM_SENSOR" H 10700 3966 50  0000 C CNN
+F 2 "" H 10700 4200 50  0001 C CNN
+F 3 "~" H 10700 4200 50  0001 C CNN
+	1    10700 4200
+	-1   0    0    1   
+$EndComp
+$Comp
+L Switch:SW_SPDT SW3
+U 1 1 612D300D
+P 10700 5000
+F 0 "SW3" H 10700 4675 50  0000 C CNN
+F 1 "Z_DATUM_SENSOR" H 10700 4766 50  0000 C CNN
+F 2 "" H 10700 5000 50  0001 C CNN
+F 3 "~" H 10700 5000 50  0001 C CNN
+	1    10700 5000
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	10900 5000 11150 5000
+Wire Wire Line
+	11150 5000 11150 5600
+Wire Wire Line
+	10900 4200 11150 4200
+Wire Wire Line
+	11150 4200 11150 4600
+Wire Wire Line
+	10500 4100 10150 4100
+Wire Wire Line
+	10500 4300 9900 4300
+Text Label 9600 4100 2    50   ~ 0
+61
+Text Label 9600 4300 2    50   ~ 0
+60
+Wire Wire Line
+	10500 4900 10150 4900
+Wire Wire Line
+	10150 4900 10150 4100
+Connection ~ 10150 4100
+Wire Wire Line
+	10150 4100 9600 4100
+Wire Wire Line
+	10500 5100 9900 5100
+Wire Wire Line
+	9900 5100 9900 4300
+Connection ~ 9900 4300
+Wire Wire Line
+	9900 4300 9600 4300
+Text Label 9700 5600 2    50   ~ 0
+51
+Text Label 9600 4600 2    50   ~ 0
+50
+Text Notes 9450 4600 2    50   ~ 0
+YELLOW
+Text Notes 9450 4300 2    50   ~ 0
+BLUE
+Text Notes 9450 4100 2    50   ~ 0
+RED
+Text Notes 9550 5600 2    50   ~ 0
+GREEN
+$Comp
+L custom:custom_relay K1
+U 1 1 612F6F25
+P 7550 4700
+F 0 "K1" V 7450 4350 50  0000 C CNN
+F 1 "XDR" V 7550 4350 50  0000 C CNN
+F 2 "Relay_THT:Relay_StandexMeder_DIP_LowProfile" H 7900 4650 50  0001 L CNN
+F 3 "https://standexelectronics.com/wp-content/uploads/datasheet_reed_relay_DIP.pdf" H 7550 4700 50  0001 C CNN
+	1    7550 4700
+	0    1    1    0   
+$EndComp
+$Comp
+L custom:custom_relay K2
+U 1 1 612F7996
+P 7550 5700
+F 0 "K2" V 7450 5350 50  0000 C CNN
+F 1 "ZDR" V 7550 5350 50  0000 C CNN
+F 2 "Relay_THT:Relay_StandexMeder_DIP_LowProfile" H 7900 5650 50  0001 L CNN
+F 3 "https://standexelectronics.com/wp-content/uploads/datasheet_reed_relay_DIP.pdf" H 7550 5700 50  0001 C CNN
+	1    7550 5700
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	7850 4600 7850 4500
+Wire Wire Line
+	7850 4600 11150 4600
+Wire Wire Line
+	7850 5600 7850 5500
+Wire Wire Line
+	7850 5600 11150 5600
+Text Label 7150 4500 2    50   ~ 0
+61
+Wire Wire Line
+	7250 4500 7150 4500
+Text Label 7150 5500 2    50   ~ 0
+61
+Wire Wire Line
+	7250 5500 7150 5500
+Wire Wire Line
+	7250 5900 7250 6200
+Wire Wire Line
+	7850 5900 7850 6200
+Wire Wire Line
+	7850 4900 7850 5150
+$Comp
+L Device:C C2
+U 1 1 613136B3
+P 7550 5150
+F 0 "C2" V 7450 5550 50  0000 C CNN
+F 1 "(RS 264-5015)" V 7550 5800 50  0000 C CNN
+F 2 "" H 7588 5000 50  0001 C CNN
+F 3 "~" H 7550 5150 50  0001 C CNN
+	1    7550 5150
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	7400 5150 7250 5150
+Wire Wire Line
+	7250 4900 7250 5150
+Wire Wire Line
+	7700 5150 7850 5150
+$Comp
+L Device:C C3
+U 1 1 6131AC77
+P 7550 6200
+F 0 "C3" V 7450 6600 50  0000 C CNN
+F 1 "(RS 264-5015)" V 7550 6850 50  0000 C CNN
+F 2 "" H 7588 6050 50  0001 C CNN
+F 3 "~" H 7550 6200 50  0001 C CNN
+	1    7550 6200
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	7400 6200 7250 6200
+Wire Wire Line
+	7700 6200 7850 6200
+Wire Wire Line
+	7850 6200 7850 6450
+Wire Wire Line
+	7850 6450 8150 6450
+Connection ~ 7850 6200
+Wire Wire Line
+	7250 6200 7250 6450
+Wire Wire Line
+	7250 6450 7000 6450
+Connection ~ 7250 6200
+Wire Wire Line
+	7850 5150 7850 5300
+Wire Wire Line
+	7850 5300 8100 5300
+Connection ~ 7850 5150
+Wire Wire Line
+	7250 5150 7250 5300
+Wire Wire Line
+	7250 5300 7050 5300
+Connection ~ 7250 5150
+Text Label 7050 5300 2    50   ~ 0
+56
+Text Label 8100 5300 2    50   ~ 0
+55
+Text Label 7000 6450 2    50   ~ 0
+57
+Wire Wire Line
+	4950 2550 5350 2550
+Text Label 4950 2550 0    50   ~ 0
+SPINDLE_ENABLE
+Text Label 8500 2450 0    50   ~ 0
+SPINDLE_ENABLE
+Wire Wire Line
+	8500 2450 9150 2450
+Wire Wire Line
+	6750 3100 7250 3100
+Text Label 6850 3100 2    50   ~ 0
+26
+Wire Wire Line
+	6750 3200 7250 3200
+Text Label 6850 3200 2    50   ~ 0
+24
+$Sheet
+S 7500 2350 1000 1200
+U 61250D2F
+F0 "mesa_7I75" 50
+F1 "mesa_7I75.sch" 50
+F2 "SPINDLE_ENABLE" O R 8500 2450 50 
+F3 "MESA_5V" U R 8500 2550 50 
+F4 "MESA_GND" U R 8500 2650 50 
+F5 "TB0" I L 7500 2550 50 
+F6 "TB1" I L 7500 2650 50 
+F7 "TB2" I L 7500 2750 50 
+F8 "X_ENDSTOP" I R 8500 3050 50 
+F9 "Z_ENDSTOP" I R 8500 3150 50 
+F10 "EMERGENCY_STOP" I R 8500 3250 50 
+F11 "24V+" U R 8500 3350 50 
+F12 "24V_GND" U R 8500 3450 50 
+F13 "TPFW" O L 7500 2450 50 
+$EndSheet
+Wire Wire Line
+	8500 2650 9150 2650
+Text Label 8900 2650 2    50   ~ 0
+MESA_GND
+Wire Wire Line
+	8500 2550 9150 2550
+Text Label 8850 2550 2    50   ~ 0
+MESA_5V
+Wire Wire Line
+	8500 3050 9150 3050
+Text Label 8650 3050 2    50   ~ 0
+55
+Wire Wire Line
+	8500 3150 9150 3150
+Text Label 8650 3150 2    50   ~ 0
+57
+Text Label 8650 3350 2    50   ~ 0
+61
+Text Label 8650 3450 2    50   ~ 0
+60
+Wire Wire Line
+	8500 3450 9150 3450
+Wire Wire Line
+	8500 3350 9150 3350
+Text Label 7450 2100 2    50   ~ 0
+MESA_5V
+Text Label 7500 2200 2    50   ~ 0
+MESA_GND
+Wire Wire Line
+	7100 2200 7500 2200
+Wire Wire Line
+	7100 2100 7450 2100
+Wire Wire Line
+	7100 2000 7450 2000
+Text Label 7250 2000 2    50   ~ 0
+60
+Wire Wire Line
+	7100 1900 7450 1900
+Text Label 7250 1900 2    50   ~ 0
+61
+Wire Wire Line
+	7100 2350 7300 2350
+Wire Wire Line
+	7300 2350 7300 2450
+Wire Wire Line
+	7300 2450 7500 2450
+Wire Wire Line
+	7100 2450 7250 2450
+Wire Wire Line
+	7250 2450 7250 2550
+Wire Wire Line
+	7250 2550 7500 2550
+Wire Wire Line
+	7100 2550 7200 2550
+Wire Wire Line
+	7200 2550 7200 2650
+Wire Wire Line
+	7200 2650 7500 2650
+Wire Wire Line
+	7100 2650 7150 2650
+Wire Wire Line
+	7150 2650 7150 2750
+Wire Wire Line
+	7150 2750 7500 2750
+Wire Wire Line
+	5950 3300 5200 3300
+Wire Wire Line
+	5200 3300 5200 2650
+Wire Wire Line
+	5200 2650 4950 2650
+Text Notes 7000 7100 0    118  ~ 0
+Drawing:\nCaleb Szalacinski\n2021
+Wire Notes Line
+	4100 5250 5150 5250
+Wire Notes Line
+	5150 5250 5150 5800
+Wire Notes Line
+	5150 5800 4100 5800
+Wire Notes Line
+	4100 5800 4100 5250
+Text Notes 4350 5550 0    50   ~ 0
+ESTOP RELAY
+$Comp
+L Switch:SW_SPST SW4
+U 1 1 6144684C
+P 5950 5100
+F 0 "SW4" H 5950 5335 50  0000 C CNN
+F 1 "ESTOP" H 5950 5244 50  0000 C CNN
+F 2 "" H 5950 5100 50  0001 C CNN
+F 3 "~" H 5950 5100 50  0001 C CNN
+	1    5950 5100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6150 5100 6350 5100
+Text Label 6350 5100 2    50   ~ 0
+61
+Wire Wire Line
+	5750 5100 5500 5100
+Text Label 5600 5100 0    50   ~ 0
+62
+Wire Wire Line
+	5500 5100 5500 5000
+Wire Wire Line
+	5500 5000 5350 5000
+Wire Wire Line
+	5350 5000 5350 5100
+Wire Wire Line
+	5350 5100 5050 5100
+Text Label 5150 5100 0    50   ~ 0
+68
+Text Notes 5300 5000 0    50   ~ 0
+JUMPER
+Wire Notes Line
+	4950 5250 4950 5450
+Wire Notes Line
+	4750 5450 4750 5250
+Wire Notes Line
+	4550 5450 4550 5250
+Wire Notes Line
+	4350 5450 4350 5250
+Wire Notes Line
+	4100 5450 5150 5450
+Wire Notes Line
+	4950 5600 4950 5800
+Wire Notes Line
+	4750 5600 4750 5800
+Wire Notes Line
+	4550 5600 4550 5800
+Wire Notes Line
+	4350 5600 4350 5800
+Wire Notes Line
+	4100 5600 5150 5600
+Text Notes 5000 5400 0    50   ~ 0
+A1
+Wire Wire Line
+	5050 5100 5050 5250
+Wire Wire Line
+	5050 5800 5050 5950
+Wire Wire Line
+	5050 5950 5400 5950
+Text Label 5250 5950 2    50   ~ 0
+60
+Text Notes 4800 5400 0    50   ~ 0
+43
+Text Notes 4600 5400 0    50   ~ 0
+33
+Text Notes 4400 5400 0    50   ~ 0
+23
+Text Notes 4200 5400 0    50   ~ 0
+13
+Text Notes 4200 5750 0    50   ~ 0
+14
+Text Notes 4400 5750 0    50   ~ 0
+24
+Text Notes 4600 5750 0    50   ~ 0
+34
+Text Notes 4800 5750 0    50   ~ 0
+44
+Text Notes 5000 5750 0    50   ~ 0
+A2
+Wire Wire Line
+	4850 5250 4850 4900
+Wire Wire Line
+	4850 4900 5000 4900
+Wire Wire Line
+	4850 5800 4850 6100
+Wire Wire Line
+	4850 6100 5000 6100
+Text Label 5000 4900 2    50   ~ 0
+25
+Text Label 5000 6100 2    50   ~ 0
+26
+Wire Wire Line
+	4450 5800 4450 6400
+Wire Wire Line
+	4450 6400 4700 6400
+Text Label 4550 6400 0    50   ~ 0
+5
+Wire Wire Line
+	4450 5250 4450 4750
+Wire Wire Line
+	4450 4750 4600 4750
+Text Label 4500 4750 0    50   ~ 0
+4
+Wire Wire Line
+	4200 5250 4200 4600
+Wire Wire Line
+	4200 4600 4350 4600
+Text Label 4250 4600 0    50   ~ 0
+2
+Wire Wire Line
+	4200 5800 4200 6600
+Wire Wire Line
+	4200 6600 4500 6600
+Text Label 4300 6600 0    50   ~ 0
+3
+Wire Wire Line
+	4650 5250 4650 4900
+Wire Wire Line
+	4650 4900 4750 4900
+Text Label 4700 4900 0    50   ~ 0
+58
+Wire Wire Line
+	4650 5800 4650 6250
+Text Label 4750 6250 0    50   ~ 0
+59
+Wire Wire Line
+	4650 6250 5450 6250
+Text Label 5450 6250 2    50   ~ 0
+MESA_GND
+Text Label 8550 3250 0    50   ~ 0
+58
+Wire Wire Line
+	8500 3250 9150 3250
+Text Label 8150 6450 2    50   ~ 0
+55
+$EndSCHEMATC
